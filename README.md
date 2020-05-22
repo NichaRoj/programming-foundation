@@ -1,1 +1,3 @@
-programming-foundation
+## Programming Foundation
+
+By Nicha Rojsrikul
