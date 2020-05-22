@@ -1,0 +1,16 @@
+{
+  "name": "basic-concepts",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "author": "Nicha Rojsrikul",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.3"
+  }
+}
