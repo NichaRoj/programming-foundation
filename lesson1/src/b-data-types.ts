@@ -5,7 +5,8 @@
 const bool = true; // Boolean: true or false
 const num = 12.3; // Number. In other languages, it is usually split into int and float.
 const str = "hello world"; // String.
-const arr = [num, str, "what"]; // Array. Basically a group of values.
+const arr = [num, str, "what"]; // Array (or list). Basically a group of values.
+const emptyArr = [];
 
 // In addition, there are special types as well.
 // We already saw `null` and `undefined`.
@@ -38,3 +39,6 @@ var3 = "var3";
 // And if a variable can have be multiple types, `|` can be used to indicate that too.
 let var4: string | number = 10;
 var4 = "10";
+
+let var5: "yes" | "no" = "yes";
+// var5 = "ok"
