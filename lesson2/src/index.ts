@@ -112,3 +112,76 @@ class Message {
 
 // Those properties can be called by refering to the class
 Message.print(`${Message.INFO}`);
+
+// Now that we understand what class and interface are, let's learn about superclass/subclass.
+// What are they? Well, first, let's consider these sentences:
+// - Beef is a kind of meat
+// - Pork is a kind of meat
+// - Fish is a kind of meat
+// So are they the same? No! But they must have something similar about them for both to be 'meat'
+
+// Let's create a class of Meat first
+class Meat {
+  constructor(calorie = 100) {}
+}
+
+// So here's a class of Meat with default calorie of 100 kCal. Of course the calorie can change depending on each instance.
+// Let's create a class of Beef
+class Beef extends Meat {
+  constructor(calorie = 150, grade: string) {
+    super(calorie);
+  }
+}
+// Do you see the keyword `extends`? That is the keyword for creating a subclass!
+// So what is a subclass? A subclass is a class that derives from superclass.
+// You can say that a subclass has a 'is a' relationship with a superclass, like the sentence above!
+// So in this case, Meat would be called `superclass` and `Beef` would be called a subclass.
+// And of course, Beef can have its own additional properties and functions as well.
+
+// You can try creating class of `Pork` and `Fish` now.
+
+// Ok, next, let's look at these sentences.
+// - Dogs are animals
+// - Cats are animals
+// Obviously, they are not the same. But let's create an interface of Animal first
+interface Animal {
+  name: string;
+  age: number;
+  cry: () => void;
+  eat: (any) => boolean;
+}
+
+// So an animal would have a name and an age (in months). It can also cry and eat.
+// But why not create a class of Animal? Because different animals eat different things! And cry differently!
+// So we cannot assume animals to have the same cry or eat the same thing. But we can assume that an animal would eat and cry!
+// Let's create a class of Dog
+
+class Dog implements Animal {
+  name: string;
+  age: number;
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  public cry() {
+    console.log(`${this.name}: Woof!`);
+  }
+
+  public eat(food: any) {
+    if (food instanceof Meat) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+// So if we create a dog and feed it some kind of meat, it will accept the food!
+const maggie = new Dog("maggie", 12);
+
+maggie.cry();
+console.log(maggie.eat(new Beef(150, "A5")));
+console.log(maggie.eat("meat"));
+
+// Let's try to create a class of Cat this time, but remember, Cat only eats fish!
