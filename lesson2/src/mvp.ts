@@ -11,6 +11,7 @@
 // If you are not instructed by me then you should google!
 // And read the comparison of MVP with MVC and MVVM as well!
 // But most importantly, don't forget to look at the examples! It really helps.
+// https://medium.com/cr8resume/make-you-hand-dirty-with-mvp-model-view-presenter-eab5b5c16e42
 
 // However, the best way to learn is to try our hands on it!
 // So let's make a simple terminal-based ATM where we can register a new account, and also deposit/withdraw from the account as well.
