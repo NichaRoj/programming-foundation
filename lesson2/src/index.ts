@@ -1,4 +1,4 @@
-/** Object-Oriented Programming
+/** Object-Oriented Programming (OOP)
  *
  * Goal: Reuse components and enforce type checks
  * Characteristics:
@@ -19,6 +19,8 @@
 // For example, a bank account would have at least a name and the total number of money in that account.
 // Since the type is more complex than the types Typescript has, the type would fall under `object`
 // `object` is an umbrella type for any data types that we create ourselves.
+let bankAccountAName = "Meen";
+let bankAccountATotal = 467.3;
 
 let bankAccountA = {
   name: "Meen",
@@ -27,12 +29,12 @@ let bankAccountA = {
 
 // This variable will have the type `object` which has `name` and `total` as its properties.
 // But what if we want to define this type to variables or inputs of a function?
-
+let abc: number;
 let bankAccountB: {
   name: string;
   total: number;
 };
-
+let func = (amount: number) => {};
 let someFunc = (account: { name: string; total: number }) => account;
 
 // But we don't want to repeat it again and again, so we will create an interface for it!
@@ -50,14 +52,14 @@ let bankAccountC: BankAccountInt;
 // However, deposit and withdraw should work the same way for all bank accounts
 // But we still need to define deposit and withdraw every time we create a BankAccount
 bankAccountC = {
-  name: "Nicha",
+  name: " Nicha",
   total: 350.42,
   deposit: (amount: number) => {
-    this.total += amount;
-  }, // This means this.total = this.total + amount
+    this.total += amount; // This means this.total = this.total + amount
+  },
   withdraw: (amount: number) => {
-    this.total -= amount;
-  }, // This means this.total = this.total - amount
+    this.total -= amount; // This means this.total = this.total - amount
+  },
 };
 
 // It will still work though
@@ -66,7 +68,11 @@ console.log(`bankAccountC Total: ${bankAccountC.total}`);
 
 // If `interface` is just a blueprint, then a `class` is a robot that will start working whenever we want
 class BankAccount {
-  constructor(public name: string, public total: number) {} // name and total become BankAccount's properties
+  constructor(
+    public name: string,
+    public total: number,
+    private SSN: string = "49635"
+  ) {} // name and total become BankAccount's properties
 
   public deposit(amount: number) {
     this.total += amount;
@@ -75,12 +81,17 @@ class BankAccount {
   public withdraw(amount: number) {
     this.total -= amount;
   }
+
+  printSSN() {
+    console.log(bankAccountD.SSN);
+  }
 }
 
 // Now we can easily create a bank account
-let bankAccountD = new BankAccount("Emma", 0);
+let bankAccountD = new BankAccount("Emma", 0, "74996");
 bankAccountD.deposit(500);
 console.log(`bankAccountD Total: ${bankAccountD.total}`);
+bankAccountD.printSSN();
 
 // This new account is called an instance of a BankAccount.
 // Now, let's take note of some keywords.
