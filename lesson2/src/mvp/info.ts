@@ -15,3 +15,32 @@
 
 // However, the best way to learn is to try our hands on it!
 // So let's make a simple terminal-based ATM where we can register a new account, and also deposit/withdraw from the account as well.
+
+// First, we must read the input from terminal somehow.
+// Since it can be quite complicated, we will borrow 'readline' module to do that.
+// To use external modules/libraries, the keyword
+import * as readline from "readline";
+
+// Now we are ready to use 'readline' module!
+// We can consult its document for its usage here: https://nodejs.org/api/readline.html#readline_readline
+// Here's one example for using the module.
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.question("Is this working? [y/n]", (answer) => {
+  switch (answer) {
+    case "y":
+      console.log("Nice");
+      break;
+    case "n":
+      console.log("Then how did you type?");
+      break;
+  }
+
+  rl.close();
+});
+
+// Okay, now we know how build an interface for us to interact, let's move on to MVP.
+// First, check out main.ts
