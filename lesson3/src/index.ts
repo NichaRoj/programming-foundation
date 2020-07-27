@@ -42,7 +42,7 @@ class Money {
  * In OOP, objects are usually 'shared' since it is passed around and views would refer to them.
  * However, it is vulnerable to 'race condition' so in functional programming, it tries to avoid using shared states.
  *
- * Next is immutability. Immutability means that a variableis permanent and unchanged.
+ * Next is immutability. Immutability means that a variable is permanent and unchanged.
  * Let's look at an example.
  */
 

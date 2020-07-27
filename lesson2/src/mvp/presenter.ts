@@ -5,6 +5,8 @@
 export class RegisterPresenter {
   private view;
   private model;
+  private name;
+  private password;
 
   constructor(view) {
     this.view = view;
@@ -18,8 +20,11 @@ export class RegisterPresenter {
   }
 
   public checkName(name) {
-    // Tell model to check if this name already exists
-
-    this.view.showAskPassword();
+    const accounts = this.model.getAllAccounts() as { name }[];
+    if (accounts.find((each) => each.name === name)) {
+      this.view.showSameNameMsg();
+    } else {
+      this.view.showAskPassword();
+    }
   }
 }

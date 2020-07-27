@@ -56,42 +56,29 @@ const exitMsg = "Thank you for your patronage.\n";
 
 class RegisterView {
   private presenter;
-  private name;
-  private password;
 
   public show() {
     this.presenter = new RegisterPresenter(this);
-    this.name = "";
-    this.password = "";
 
     rl.showQuestion(registerMsg[0], (answer) => {
-      this.name = answer;
       this.presenter.checkName(answer);
     });
   }
 
   public showSameNameMsg() {
     rl.showQuestion(registerSameNameMsg, (answer) => {
-      this.name = answer;
       this.presenter.checkName(answer);
     });
   }
 
   public showAskPassword() {
     rl.showQuestion(registerMsg[1], (answer) => {
-      this.password = answer;
       this.showAskPasswordAgain();
     });
   }
 
   public showAskPasswordAgain() {
-    rl.showQuestion(registerMsg[2], (answer) => {
-      if (answer != this.password) {
-        this.showIncorrectPassword();
-      } else {
-        this.presenter.createAccount(this.name, this.password);
-      }
-    });
+    rl.showQuestion(registerMsg[2], (answer) => {});
   }
 
   public showIncorrectPassword() {

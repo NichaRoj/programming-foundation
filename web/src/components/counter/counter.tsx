@@ -1,8 +1,7 @@
 import React from "react";
-import { defaultCipherList } from "constants";
 
 class Counter extends React.Component {
-  constructor(props) {
+  constructor(props: { name: string }) {
     super(props);
     this.state = {
       number: 0,
@@ -13,23 +12,24 @@ class Counter extends React.Component {
   }
 
   add() {
-    this.setState((state) => ({
-      number: state["number"] + 1,
+    this.setState((oldState: any) => ({
+      number: oldState.number + 1,
     }));
   }
 
   subtract() {
-    this.setState((state) => ({
-      number: state["number"] - 1,
+    this.setState((oldState: any) => ({
+      number: oldState.number - 1,
     }));
   }
 
   render() {
     return (
       <div>
-        <h2>Counter: {this.state["number"]}</h2>
+        <h2>Counter: {(this.state as any).number}</h2>
         <button onClick={this.add}>Add</button>
         <button onClick={this.subtract}>Subtract</button>
+        <p>Hello, {(this.props as any).name}</p>
       </div>
     );
   }
