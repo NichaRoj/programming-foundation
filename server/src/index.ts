@@ -23,5 +23,16 @@ import { connectToDb, disconnectFromDb } from "./util/mongooser";
  * Well, let's focus on creating a server that can handle HTTP APIs using Express first.
  */
 
-connectToDb();
-disconnectFromDb();
+// connectToDb(); 
+// disconnectFromDb();
+import express from "express";
+import {register} from "./auth/register"
+const app = express()
+const port = 3000
+app.get('/', (req, res) => res.send('Hello World!'))
+app.post('/register', register)
+
+
+app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+
+
