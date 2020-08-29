@@ -12,5 +12,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.19"
+  },
+  "prettier": {
+    "semi": false
   }
 }
