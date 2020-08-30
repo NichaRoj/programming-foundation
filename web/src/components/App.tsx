@@ -1,7 +1,9 @@
-import React from "react";
-import logo from "../logo.svg";
-import "./App.css";
-import Counter from "./counter/counter";
+import React from "react"
+import logo from "../logo.svg"
+import "./App.css"
+import Counter from "./counter/counter"
+import LoginForm from "./login"
+import "antd/dist/antd.css"
 
 function App() {
   return (
@@ -20,9 +22,10 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Counter />
+      {/* <Counter name="meen" /> */}
+      <LoginForm />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
