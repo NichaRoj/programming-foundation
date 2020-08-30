@@ -1,4 +1,9 @@
-import { connectToDb, disconnectFromDb } from "./util/mongooser";
+import { connectToDb } from "./util/mongooser"
+import express from "express"
+import bodyParser from "body-parser"
+import { User } from "./schema/user"
+import { Account } from "./schema/account"
+import { encryptPassword, isCorrectPassword } from "./util/password"
 
 /**
  * Welcome to the server for our online banking service!
@@ -23,5 +28,46 @@ import { connectToDb, disconnectFromDb } from "./util/mongooser";
  * Well, let's focus on creating a server that can handle HTTP APIs using Express first.
  */
 
-connectToDb();
-disconnectFromDb();
+connectToDb()
+
+const app = express()
+const port = 8080
+
+app.use(bodyParser.json()) // to support JSON-encoded bodies
+app.use(
+  bodyParser.urlencoded({
+    // to support URL-encoded bodies
+    extended: true,
+  })
+)
+
+app.get("/ping", (req, res) => {
+  res.send("pong")
+})
+
+app.post("/register", async (req, res) => {
+  const { username, password } = req.body
+
+  const newUser = await User.create({
+    username,
+    ...encryptPassword(password),
+    accounts: [],
+  })
+
+  res.send({ id: newUser.id, username: newUser.username })
+})
+
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body
+
+  const user = await User.findOne({ username })
+  if (!user) return res.status(400).send({ message: "User not found" })
+
+  if (isCorrectPassword(user.salt, user.password, password))
+    return res.send({ id: user.id, username: user.username })
+  else return res.status(400).send({ message: "Incorrect password" })
+})
+
+app.listen(port, () =>
+  console.log(`Server is listening at http://localhost:${port}`)
+)
