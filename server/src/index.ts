@@ -1,6 +1,7 @@
 import { connectToDb } from "./util/mongooser"
 import express from "express"
 import bodyParser from "body-parser"
+import cors from "cors"
 import { User } from "./schema/user"
 import { Account } from "./schema/account"
 import { encryptPassword, isCorrectPassword } from "./util/password"
@@ -33,6 +34,7 @@ connectToDb()
 const app = express()
 const port = 8080
 
+app.use(cors())
 app.use(bodyParser.json()) // to support JSON-encoded bodies
 app.use(
   bodyParser.urlencoded({
