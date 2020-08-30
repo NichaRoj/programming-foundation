@@ -1,4 +1,5 @@
 import React from "react"
+import axios from "axios"
 import { Form, Input, Button, Row, Card, Layout } from "antd"
 
 const tabList = [
@@ -34,10 +35,17 @@ class LoginForm extends React.Component {
           >
             <Form
               style={{ width: "500px" }}
-              onFinish={(values) => {
-                const { username, password, password2 } = values
+              onFinish={async (values) => {
+                const { username, password } = values
 
-                console.log("Send api here...")
+                const result = await axios.post(
+                  `http://localhost:8080/${this.state.cardTab}`,
+                  {
+                    username,
+                    password,
+                  }
+                )
+                console.log(result.data)
               }}
             >
               <Form.Item

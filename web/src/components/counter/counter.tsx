@@ -1,5 +1,6 @@
 import React from "react"
 import { Button } from "antd"
+import { Link } from "react-router-dom"
 
 interface CounterProps {
   name: string
@@ -39,7 +40,11 @@ class Counter extends React.Component<CounterProps> {
         <Button danger={true} onClick={this.subtract}>
           Mango Salad
         </Button>
+        <br />
         <p>Hello, {this.props.name}</p>
+        <Link to="/login">
+          <Button type="primary">Login</Button>
+        </Link>
       </div>
     )
   }
