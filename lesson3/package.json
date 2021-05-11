@@ -11,7 +11,7 @@
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
-    "lodash": "^4.17.19"
+    "lodash": "^4.17.21"
   },
   "prettier": {
     "semi": false
